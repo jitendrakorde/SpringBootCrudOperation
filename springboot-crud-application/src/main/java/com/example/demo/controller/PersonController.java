@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import java.security.Principal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,11 @@ public class PersonController {
 	
 	@Autowired
 	private PersonService personService;
+	
+	@GetMapping("/")
+	public String message(Principal principal) {
+		return "Hi "+principal.getName()+" welcome to Spring Cloud Oauth2 Application";
+	}
 	
 	@PostMapping("/addPerson")
 	public Person addPerson(@RequestBody Person Person)
